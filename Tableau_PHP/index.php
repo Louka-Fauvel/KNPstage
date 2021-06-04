@@ -15,6 +15,10 @@ $unites = [
   'x'
 ];
 
+$ingredients['noix'] = 50;
+
+$unites[] = 'grammes';
+
 print_r($ingredients);
 echo "<br>";
 print_r($unites);

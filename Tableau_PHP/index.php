@@ -26,6 +26,7 @@ echo "<br>";
 echo "<p>".$ingredients['farine']." ".$unites[3]." de farine.</p>";
 
 $g = count($ingredients) - count($ingredients);
+
 foreach ($ingredients as $i => $j) {
   echo "$i : $j ".$unites[$g];
   echo "<br>";

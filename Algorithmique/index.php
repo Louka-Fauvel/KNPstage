@@ -34,4 +34,30 @@ echo "<br>";
 print_r($M);
 echo "<h2>Différence</h2>";
 print_r($difference);
+
+//AlgoExo4
+$matrice[0] = [1, 2, 3, 4];
+$matrice[1] = [2, 1, 2, 3];
+$matrice[2] = [3, 2, 1, 2];
+$matrice[3] = [4, 3, 2, 1];
+
+$k = 0;
+
+echo "<br><br><h1>AlgoExo4</h1>";
+echo "<h2>Matrice</h2>";
+
+for ($i = 0; $i < $matrice[3][0]; $i++) {
+  for ($j = 0; $j < $matrice[0][3]; $j++) {
+    echo $matrice[$i][$j]."&nbsp; &nbsp; &nbsp;";
+    if ($j == 3) {
+      echo "<br>";
+    }
+    if ($matrice[$i][$j] % 2) {
+      $k++;
+    }
+  }
+}
+
+echo "<h2>Nombre de chiffre pair</h2>";
+echo "$k pair(s)";
 ?>

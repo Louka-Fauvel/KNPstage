@@ -60,4 +60,43 @@ for ($i = 0; $i < $matrice[3][0]; $i++) {
 
 echo "<h2>Nombre de chiffre pair</h2>";
 echo "$k pair(s)";
+
+//AlgoExo5
+
+echo "<br><br><h1>AlgoExo5</h1>";
+echo "<h2>Somme de tous les multiples</h2>";
+echo "<p><b>Les multiples de 3 :</b> ";
+
+$somme3 = 0;
+$somme5 = 0;
+
+for ($i = 0; $i < 1000; $i++) {
+  $multiple3 = 3 * $i;
+  $somme3 = $somme3 + $multiple3;
+  if ($somme3 < 1000) {
+    echo "$multiple3, ";
+  }else {
+    $somme3 = $somme3 - $multiple3;
+    $multiple3 = 3 * ($i - 1);
+    echo "</p>";
+    break;
+  }
+}
+echo "<p>La somme de tous les multiples de 3 strictement inférieurs à 1000 est $somme3.</p>";
+
+echo "<p><b>Les multiples de 5 :</b> ";
+
+for ($i = 0; $i < 1000; $i++) {
+  $multiple5 = 5 * $i;
+  $somme5 = $somme5 + $multiple5;
+  if ($somme5 < 1000) {
+    echo "$multiple5, ";
+  }else {
+    $somme5 = $somme5 - $multiple5;
+    $multiple5 = 5 * ($i - 1);
+    echo "</p>";
+    break;
+  }
+}
+echo "<p>La somme de tous les multiples de 5 strictement inférieurs à 1000 est $somme5.</p>";
 ?>

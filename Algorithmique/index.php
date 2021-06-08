@@ -63,13 +63,11 @@ echo "$k pair(s)";
 
 //AlgoExo5
 
-function LesMultiples($chiffre) {
+function lesMultiples($chiffre) {
   echo "<p><b>Les multiples de $chiffre :</b> ";
-
 }
 
-function Multiples($chiffre, $max) {
-
+function multiples($chiffre, $max) {
   for ($i = 1; $i < $max; $i++) {
     $multiple[$i-1] = $chiffre * $i;
 
@@ -85,7 +83,7 @@ function Multiples($chiffre, $max) {
 
 }
 
-function SommeMul($chiffre, $multiple) {
+function sommeMul($chiffre, $multiple) {
   $Multiple = 0;
   foreach ($multiple as $i => $j) {
     $Multiple = $Multiple + $multiple[$i];
@@ -94,14 +92,15 @@ function SommeMul($chiffre, $multiple) {
 
 }
 
-function SommeOne($Somme) {
+function sommeOne($Somme) {
   foreach ($Somme as $i => $j) {
     echo $Somme[$i].",";
   }
   echo "</p>";
+  
 }
 
-function SommeAllMul($somme3, $somme5) {
+function sommeAllMul($somme3, $somme5) {
   $Somme = array_merge($somme3, $somme5);
   sort($Somme);
 
@@ -114,17 +113,17 @@ function SommeAllMul($somme3, $somme5) {
 echo "<br><br><h1>AlgoExo5</h1>";
 echo "<h2>Somme des multiples 3 et 5</h2>";
 
-LesMultiples(3);
-$somme3 = Multiples(3, 10);
-SommeOne($somme3);
-SommeMul(3, $somme3);
+lesMultiples(3);
+$somme3 = multiples(3, 10);
+sommeOne($somme3);
+sommeMul(3, $somme3);
 
-LesMultiples(5);
+lesMultiples(5);
 $somme5 = Multiples(5, 10);
-SommeOne($somme5);
-SommeMul(5, $somme5);
+sommeOne($somme5);
+sommeMul(5, $somme5);
 
 echo "<h2>Somme de tous les multiples</h2>";
 
-SommeAllMul($somme3, $somme5);
+sommeAllMul($somme3, $somme5);
 ?>

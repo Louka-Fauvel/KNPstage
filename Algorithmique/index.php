@@ -71,59 +71,57 @@ function multiples($chiffre, $max) {
   for ($i = 1; $i < $max; $i++) {
     $multiple[$i-1] = $chiffre * $i;
 
-    if ($multiple[$i-1] < $max) {
-
-    } else {
+    if ($multiple[$i-1] >= $max) {
       unset($multiple[$i-1]);
       break;
     }
-
   }
-  return $multiple;
 
+  return $multiple;
 }
 
 function sommeMul($chiffre, $multiple) {
-  $Multiple = 0;
-  foreach ($multiple as $i => $j) {
-    $Multiple = $Multiple + $multiple[$i];
-  }
-  echo "<p>La somme de tous les multiples de $chiffre strictement inférieurs à 1000 est $Multiple.</p>";
+  $somme = 0;
 
+  foreach ($multiple as $i => $j) {
+    $somme = $somme + $multiple[$i];
+  }
+
+  echo "<p>La somme de tous les multiples de $chiffre strictement inférieurs à 1000 est $somme.</p>";
 }
 
-function sommeOne($Somme) {
-  foreach ($Somme as $i => $j) {
-    echo $Somme[$i].",";
+function sommeOne($somme) {
+  foreach ($somme as $i => $j) {
+    echo $somme[$i].", ";
   }
+
   echo "</p>";
-  
 }
 
 function sommeAllMul($somme3, $somme5) {
-  $Somme = array_merge($somme3, $somme5);
-  sort($Somme);
+  $somme = array_merge($somme3, $somme5);
+  sort($somme);
+  //$sommeNoDoublon = array_unique($somme);
 
-  foreach ($Somme as $i => $j) {
-    echo $Somme[$i].",";
-  }
-
+  return $somme/*$sommeNoDoublon*/;
 }
 
 echo "<br><br><h1>AlgoExo5</h1>";
 echo "<h2>Somme des multiples 3 et 5</h2>";
 
 lesMultiples(3);
-$somme3 = multiples(3, 10);
+$somme3 = multiples(3, 1000);
 sommeOne($somme3);
 sommeMul(3, $somme3);
 
 lesMultiples(5);
-$somme5 = Multiples(5, 10);
+$somme5 = Multiples(5, 1000);
 sommeOne($somme5);
 sommeMul(5, $somme5);
 
 echo "<h2>Somme de tous les multiples</h2>";
 
-sommeAllMul($somme3, $somme5);
+$sommeAll = sommeAllMul($somme3, $somme5);
+sommeOne($sommeAll);
+sommeMul('3 et 5', $sommeAll);
 ?>

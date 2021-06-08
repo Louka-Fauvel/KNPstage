@@ -63,40 +63,68 @@ echo "$k pair(s)";
 
 //AlgoExo5
 
+function LesMultiples($chiffre) {
+  echo "<p><b>Les multiples de $chiffre :</b> ";
+
+}
+
+function Multiples($chiffre, $max) {
+
+  for ($i = 1; $i < $max; $i++) {
+    $multiple[$i-1] = $chiffre * $i;
+
+    if ($multiple[$i-1] < $max) {
+
+    } else {
+      unset($multiple[$i-1]);
+      break;
+    }
+
+  }
+  return $multiple;
+
+}
+
+function SommeMul($chiffre, $multiple) {
+  $Multiple = 0;
+  foreach ($multiple as $i => $j) {
+    $Multiple = $Multiple + $multiple[$i];
+  }
+  echo "<p>La somme de tous les multiples de $chiffre strictement inférieurs à 1000 est $Multiple.</p>";
+
+}
+
+function SommeOne($Somme) {
+  foreach ($Somme as $i => $j) {
+    echo $Somme[$i].",";
+  }
+  echo "</p>";
+}
+
+function SommeAllMul($somme3, $somme5) {
+  $Somme = array_merge($somme3, $somme5);
+  sort($Somme);
+
+  foreach ($Somme as $i => $j) {
+    echo $Somme[$i].",";
+  }
+
+}
+
 echo "<br><br><h1>AlgoExo5</h1>";
+echo "<h2>Somme des multiples 3 et 5</h2>";
+
+LesMultiples(3);
+$somme3 = Multiples(3, 10);
+SommeOne($somme3);
+SommeMul(3, $somme3);
+
+LesMultiples(5);
+$somme5 = Multiples(5, 10);
+SommeOne($somme5);
+SommeMul(5, $somme5);
+
 echo "<h2>Somme de tous les multiples</h2>";
-echo "<p><b>Les multiples de 3 :</b> ";
 
-$somme3 = 0;
-$somme5 = 0;
-
-for ($i = 0; $i < 1000; $i++) {
-  $multiple3 = 3 * $i;
-  $somme3 = $somme3 + $multiple3;
-  if ($somme3 < 1000) {
-    echo "$multiple3, ";
-  }else {
-    $somme3 = $somme3 - $multiple3;
-    $multiple3 = 3 * ($i - 1);
-    echo "</p>";
-    break;
-  }
-}
-echo "<p>La somme de tous les multiples de 3 strictement inférieurs à 1000 est $somme3.</p>";
-
-echo "<p><b>Les multiples de 5 :</b> ";
-
-for ($i = 0; $i < 1000; $i++) {
-  $multiple5 = 5 * $i;
-  $somme5 = $somme5 + $multiple5;
-  if ($somme5 < 1000) {
-    echo "$multiple5, ";
-  }else {
-    $somme5 = $somme5 - $multiple5;
-    $multiple5 = 5 * ($i - 1);
-    echo "</p>";
-    break;
-  }
-}
-echo "<p>La somme de tous les multiples de 5 strictement inférieurs à 1000 est $somme5.</p>";
+SommeAllMul($somme3, $somme5);
 ?>

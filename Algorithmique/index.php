@@ -60,4 +60,68 @@ for ($i = 0; $i < $matrice[3][0]; $i++) {
 
 echo "<h2>Nombre de chiffre pair</h2>";
 echo "$k pair(s)";
+
+//AlgoExo5
+
+function lesMultiples($chiffre) {
+  echo "<p><b>Les multiples de $chiffre :</b> ";
+}
+
+function multiples($chiffre, $max) {
+  for ($i = 1; $i < $max; $i++) {
+    $multiple[$i-1] = $chiffre * $i;
+
+    if ($multiple[$i-1] >= $max) {
+      unset($multiple[$i-1]);
+      break;
+    }
+  }
+
+  return $multiple;
+}
+
+function sommeMul($chiffre, $multiple) {
+  $somme = 0;
+
+  foreach ($multiple as $i => $j) {
+    $somme = $somme + $multiple[$i];
+  }
+
+  echo "<p>La somme de tous les multiples de $chiffre strictement inférieurs à 1000 est $somme.</p>";
+}
+
+function sommeOne($somme) {
+  foreach ($somme as $i => $j) {
+    echo $somme[$i].", ";
+  }
+
+  echo "</p>";
+}
+
+function sommeAllMul($somme3, $somme5) {
+  $somme = array_merge($somme3, $somme5);
+  sort($somme);
+  $sommeNoDoublon = array_unique($somme);
+
+  return $sommeNoDoublon;
+}
+
+echo "<br><br><h1>AlgoExo5</h1>";
+echo "<h2>Somme des multiples 3 et 5</h2>";
+
+lesMultiples(3);
+$somme3 = multiples(3, 1000);
+sommeOne($somme3);
+sommeMul(3, $somme3);
+
+lesMultiples(5);
+$somme5 = Multiples(5, 1000);
+sommeOne($somme5);
+sommeMul(5, $somme5);
+
+echo "<h2>Somme de tous les multiples</h2>";
+
+$sommeAll = sommeAllMul($somme3, $somme5);
+sommeOne($sommeAll);
+sommeMul('3 et 5', $sommeAll);
 ?>

@@ -101,9 +101,9 @@ function sommeOne($somme) {
 function sommeAllMul($somme3, $somme5) {
   $somme = array_merge($somme3, $somme5);
   sort($somme);
-  //$sommeNoDoublon = array_unique($somme);
+  $sommeNoDoublon = array_unique($somme);
 
-  return $somme/*$sommeNoDoublon*/;
+  return $sommeNoDoublon;
 }
 
 echo "<br><br><h1>AlgoExo5</h1>";

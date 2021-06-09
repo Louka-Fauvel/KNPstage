@@ -130,13 +130,13 @@ sommeMul('3 et 5', $sommeAll);
 function fibonacciSuite($n) {
   $num1 = 1;
   $num2 = 2;
-  $conteur = 0;
+  $compteur = 0;
   $fibonacciBoite = [];
   $pairs = [];
   $i = 0;
 
   while ($num1 < $n) {
-    $fibonacciBoite[$conteur] = $num1;
+    $fibonacciBoite[$compteur] = $num1;
 
     if ($num1 % 2 == 0) {
       $pairs[$i] = $num1;
@@ -146,10 +146,10 @@ function fibonacciSuite($n) {
     $num3 = $num2 + $num1;
     $num1 = $num2;
     $num2 = $num3;
-    $conteur++;
+    $compteur++;
   }
 
-  return $valeur = [$fibonacciBoite, $pairs];
+  return array($fibonacciBoite, $pairs);
 }
 
 function fibonacciDeroulement($pairs) {

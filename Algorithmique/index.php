@@ -127,15 +127,16 @@ sommeMul('3 et 5', $sommeAll);
 
 // algoExo6
 
-function fibonacci($n) {
-  $num1 = 0;
-  $num2 = 1;
+function fibonacciSuite($n) {
+  $num1 = 1;
+  $num2 = 2;
+  $conteur = 0;
+  $fibonacciBoite = [];
   $pairs = [];
   $i = 0;
-  $somme = 0;
 
   while ($num1 < $n) {
-    echo "$num1, ";
+    $fibonacciBoite[$conteur] = $num1;
 
     if ($num1 % 2 == 0) {
       $pairs[$i] = $num1;
@@ -145,23 +146,39 @@ function fibonacci($n) {
     $num3 = $num2 + $num1;
     $num1 = $num2;
     $num2 = $num3;
+    $conteur++;
   }
 
-  echo "<h2>Les pairs</h2>";
+  return $valeur = [$fibonacciBoite, $pairs];
+}
+
+function fibonacciDeroulement($pairs) {
 
   foreach ($pairs as $j => $g) {
     echo $pairs[$j].", ";
   }
+}
+
+function fibonacciSommePairs($pairs) {
+  $somme = 0;
 
   foreach ($pairs as $k => $l) {
     $somme = $somme + $pairs[$k];
   }
 
-  echo "<p><b>Somme de toutes les pairs est</b> $somme.</p>";
+  return $somme;
 }
 
 echo "<br><br><h1>AlgoExo6</h1>";
 echo "<h2>La suite de Fibonacci</h2>";
 
-fibonacci(4000000);
+$fibonacciSuite = fibonacciSuite(4000000);
+fibonacciDeroulement($fibonacciSuite[0]);
+
+echo "<h2>Les pairs</h2>";
+
+fibonacciDeroulement($fibonacciSuite[1]);
+$fibonacciSommePairs = fibonacciSommePairs($fibonacciSuite[1]);
+
+echo "<p><b>Somme de toutes les pairs est</b> $fibonacciSommePairs.</p>";
 ?>

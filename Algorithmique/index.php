@@ -184,10 +184,12 @@ echo "<p><b>Somme de toutes les pairs est</b> $fibonacciSommePairs.</p>";
 
 // AlgoExo7
 
-$n = 360;
+$n = 13195;
 
 function Decomposition($n) {
   $primeFactor = 2;
+  $displaysPrimeFactor = [];
+  $changeDisplays = 0;
   $next = false;
 
   while ($n > 1) {
@@ -201,31 +203,43 @@ function Decomposition($n) {
     if ($a >= 1) {
 
       if ($next) {
-        echo ' * ';
+        $displaysPrimeFactor[$changeDisplays] = ' * ';
+        $changeDisplays++;
 
       } else {
         $next = true;
       }
 
-      echo "<b>$primeFactor</b>";
+      $displaysPrimeFactor[$changeDisplays] = "<b>$primeFactor</b>";
+      $changeDisplays++;
 
       if ($a > 1) {
-        echo '^'.$a;
+        $displaysPrimeFactor[$changeDisplays] = '^'.$a;
+        $changeDisplays++;
       }
     }
 
     $primeFactor++;
   }
 
-  return --$primeFactor;
+  unset($displaysPrimeFactor[$changeDisplays]);
+  return array(--$primeFactor, $displaysPrimeFactor);
+}
+
+function displaysPrimeFactor($displaysPrimeFactor) {
+  foreach ($displaysPrimeFactor as $i => $j) {
+    echo $displaysPrimeFactor[$i];
+  }
 }
 
 echo "<br><br><h1>AlgoExo7</h1>";
 echo "<h2>The Prime Factors</h2>";
 echo "<p><b>$n</b> = ";
 
-$lastPrimeFactor = Decomposition($n);
+$factor = Decomposition($n);
+
+displaysPrimeFactor($factor[1]);
 
 echo "</p>";
-echo "<p><b>The biggest factor is</b> $lastPrimeFactor.</p>";
+echo "<p><b>The biggest factor is</b> ".$factor[0].".</p>";
 ?>

@@ -190,7 +190,6 @@ function Decomposition($n) {
   $primeFactor = 2;
   $displaysPrimeFactor = [];
   $changeDisplays = 0;
-  $next = false;
 
   while ($n > 1) {
     $a = 0;

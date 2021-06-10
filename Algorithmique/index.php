@@ -202,21 +202,8 @@ function Decomposition($n) {
 
     if ($a >= 1) {
 
-      if ($next) {
-        $displaysPrimeFactor[$changeDisplays] = ' * ';
-        $changeDisplays++;
-
-      } else {
-        $next = true;
-      }
-
-      $displaysPrimeFactor[$changeDisplays] = "<b>$primeFactor</b>";
+      $displaysPrimeFactor[$changeDisplays] = $primeFactor;
       $changeDisplays++;
-
-      if ($a > 1) {
-        $displaysPrimeFactor[$changeDisplays] = '^'.$a;
-        $changeDisplays++;
-      }
     }
 
     $primeFactor++;
@@ -228,13 +215,13 @@ function Decomposition($n) {
 
 function displaysPrimeFactor($displaysPrimeFactor) {
   foreach ($displaysPrimeFactor as $i => $j) {
-    echo $displaysPrimeFactor[$i];
+    echo $displaysPrimeFactor[$i].", ";
   }
 }
 
 echo "<br><br><h1>AlgoExo7</h1>";
 echo "<h2>The Prime Factors</h2>";
-echo "<p><b>$n</b> = ";
+echo "<p><b>The Prime Factors of</b> $n <b>are</b> ";
 
 $factor = Decomposition($n);
 

@@ -181,4 +181,47 @@ fibonacciDeroulement($fibonacciSuite[1]);
 $fibonacciSommePairs = fibonacciSommePairs($fibonacciSuite[1]);
 
 echo "<p><b>Somme de toutes les pairs est</b> $fibonacciSommePairs.</p>";
+
+// AlgoExo7
+
+$n = 600851475143;
+
+function Decomposition($n) {
+  $primeFactor = 2;
+  $displaysPrimeFactor = [];
+  $changeDisplays = 0;
+
+  while ($n > 1) {
+    $a = 0;
+
+    while ($n % $primeFactor == 0) {
+      $n = $n / $primeFactor;
+      $a++;
+    }
+
+    if ($a >= 1) {
+
+      $displaysPrimeFactor[$changeDisplays] = $primeFactor;
+      $changeDisplays++;
+    }
+
+    $primeFactor++;
+  }
+
+  unset($displaysPrimeFactor[$changeDisplays]);
+  return $displaysPrimeFactor;
+}
+
+echo "<br><br><h1>AlgoExo7</h1>";
+echo "<h2>The Prime Factors</h2>";
+echo "<p><b>The Prime Factors of</b> $n <b>are</b> ";
+
+$factor = Decomposition($n);
+
+echo join(", ", $factor);
+
+$factorMax = max($factor);
+
+echo "</p>";
+echo "<p><b>The biggest factor is</b> ".$factorMax.".</p>";
 ?>

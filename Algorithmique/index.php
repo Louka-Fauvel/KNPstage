@@ -224,4 +224,68 @@ $factorMax = max($factor);
 
 echo "</p>";
 echo "<p><b>The biggest factor is</b> ".$factorMax.".</p>";
+
+// AlgoExo8
+
+$limit = 999;
+
+function palindromeMulti($limit){
+  $firstMulti = $limit - 1;
+  $secondMulti = [];
+  $palindromeMulti = [];
+  $second = $firstMulti;
+  $box = 0;
+
+  for ($box = 0; $second > 1; $box++) {
+
+    if ($second > 1) {
+      $secondMulti[$box] = --$second;
+    }
+  }
+
+  foreach ($secondMulti as $i => $j) {
+    $palindromeMulti[$i] = $firstMulti * $secondMulti[$i];
+    $multi[$i] = "$firstMulti * ".$secondMulti[$i]." = ";
+  }
+
+  return array($palindromeMulti, $multi);
+}
+
+
+function palindrome($number) {
+
+  foreach ($number as $i => $j) {
+    $palindrome = 0;
+
+    while(floor($number[$i])) {
+      $a = $number[$i] % 10;
+      $palindrome = $palindrome * 10 + $a;
+      $number[$i] = $number[$i] / 10;
+    }
+
+      $stockPalindrome[$i] = $palindrome;
+  }
+
+  return $stockPalindrome;
+}
+
+
+function palindromeResult($palindrome, $palindromeMulti) {
+
+  foreach ($palindrome as $i => $j) {
+    if($palindromeMulti[$i] == $palindrome[$i]){
+      return array($palindromeMulti[$i], $i);
+      break;
+    }
+  }
+}
+
+echo "<br><br><h1>AlgoExo7</h1>";
+echo "<h2>Palindrome Number</h2>";
+
+$palindromeMulti = palindromeMulti($limit);
+$palindrome = palindrome($palindromeMulti[0]);
+$palindromeResult = palindromeResult($palindrome, $palindromeMulti[0]);
+
+echo "<p><b>".$palindromeMulti[1][$palindromeResult[1]]."".$palindromeResult[0]."</b> is a Palindrome number.</p>";
 ?>

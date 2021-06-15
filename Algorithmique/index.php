@@ -280,7 +280,7 @@ function palindromeResult($palindrome, $palindromeMulti) {
   }
 }
 
-echo "<br><br><h1>AlgoExo7</h1>";
+echo "<br><br><h1>AlgoExo8</h1>";
 echo "<h2>Palindrome Number</h2>";
 
 $palindromeMulti = palindromeMulti($limit);

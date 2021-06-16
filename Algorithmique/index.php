@@ -224,4 +224,82 @@ $factorMax = max($factor);
 
 echo "</p>";
 echo "<p><b>The biggest factor is</b> ".$factorMax.".</p>";
+
+// AlgoExo8
+
+$limit = 999;
+
+function palindromeMulti2($limit){
+  $firstMulti = [];
+  $secondMulti = [];
+  $multiAll = [];
+  $palindromeMulti = [];
+  $first = $limit - 1;
+  $second = $first;
+  $firstBox = 0;
+  $secondBox = 0;
+
+  for ($firstBox=0; $first > 1; $firstBox++) {
+    $firstMulti[$firstBox] = $first--;
+
+    for ($secondBox = 0; $second > 1; $secondBox++) {
+
+      if ($second > 1) {
+        $secondMulti[$secondBox] = --$second;
+      }
+    }
+  }
+
+  foreach ($firstMulti as $k => $l) {
+
+    foreach ($secondMulti as $i => $j) {
+      $multiAll[$k][$i] = $firstMulti[$k] * $secondMulti[$i];
+      $multi[$k][$i] = $firstMulti[$k]." * ".$secondMulti[$i]." = ";
+    }
+  }
+
+  $palindromeMulti = array_merge([], ...$multiAll);
+  $multiDisplay = array_merge([], ...$multi);
+  arsort($palindromeMulti);
+  return array($palindromeMulti, $multiDisplay);
+}
+
+
+function palindrome2($number) {
+
+  foreach ($number as $i => $j) {
+    $palindrome = 0;
+
+    while(floor($number[$i])) {
+      $a = $number[$i] % 10;
+      $palindrome = $palindrome * 10 + $a;
+      $number[$i] = $number[$i] / 10;
+    }
+
+      $stockPalindrome[$i] = $palindrome;
+  }
+
+  return $stockPalindrome;
+}
+
+
+function palindromeResult2($palindrome, $palindromeMulti) {
+
+  foreach ($palindrome as $i => $j) {
+
+    if($palindromeMulti[$i] == $palindrome[$i]){
+      return array($palindromeMulti[$i], $i);
+      break;
+    }
+  }
+}
+
+echo "<br><br><h1>AlgoExo8</h1>";
+echo "<h2>Palindrome Number</h2>";
+
+$palindromeMulti2 = palindromeMulti2($limit);
+$palindrome2 = palindrome2($palindromeMulti2[0]);
+$palindromeResult2 = palindromeResult2($palindrome2, $palindromeMulti2[0]);
+
+echo "<p><b>".$palindromeMulti2[1][$palindromeResult2[1]]."".$palindromeResult2[0]."</b> is a Palindrome number.</p>";
 ?>
